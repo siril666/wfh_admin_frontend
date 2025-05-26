@@ -418,6 +418,19 @@ const UploadPage = () => {
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">HM</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SOW</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SVP_Org</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">VP_Org</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Director_Org</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Team</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">TeamOwner</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">TeamOwnerID</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">DM</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">DM_ID</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Billiability</th>
+                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Remarks</th>
+
+                      
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
@@ -431,6 +444,18 @@ const UploadPage = () => {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{row.HM}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{row.Country}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{row.Location}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{row.SOW}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{row.SVP_Org}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{row.VP_Org}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{row.Director_Org}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{row.Team}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{row.TeamOwner}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{row.TeamOwnerID}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{row.DM}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{row.DM_ID}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{row.Billiability}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{row.Remarks}</td>
+
                       </tr>
                     ))}
                   </tbody>
