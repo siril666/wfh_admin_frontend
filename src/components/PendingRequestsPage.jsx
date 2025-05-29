@@ -136,133 +136,13 @@
 
 
 
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-
-// const PendingRequestsPage = () => {
-//   const [pendingEmployees, setPendingEmployees] = useState([]);
-//   const [error, setError] = useState("");
-
-//   const fetchPendingRequests = async () => {
-//     try {
-//       const response = await axios.get("http://localhost:8083/api/admin/pending-requests");
-//       setPendingEmployees(response.data);
-//       setError("");
-//     } catch (err) {
-//       console.error("Error fetching data:", err);
-//       setError("Failed to load pending requests.");
-//     }
-//   };
-
-//   const handleVerify = async (empId) => {
-//     try {
-//       await axios.post(`http://localhost:8083/api/admin/verify/${empId}`);
-//       setPendingEmployees((prev) => prev.filter((emp) => emp.ibsEmpId !== empId));
-//     } catch (err) {
-//       console.error(`Error verifying employee ${empId}:`, err);
-//       alert(`Failed to verify ${empId}`);
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchPendingRequests();
-//   }, []);
-
-//   return (
-//     <div className="max-w-7xl mx-auto px-4 py-8">
-//       {/* Header */}
-//       <div className="flex justify-between items-center mb-8">
-//         <h1 className="text-2xl font-light text-gray-800">Pending Employee Verifications</h1>
-//       </div>
-
-//       {/* Error message */}
-//       {error && (
-//         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6" role="alert">
-//           {error}
-//         </div>
-//       )}
-
-//       {/* Content */}
-//       {!error && pendingEmployees.length === 0 ? (
-//         <div className="bg-white rounded-lg shadow-sm p-6 text-center text-gray-500">
-//           No pending requests found.
-//         </div>
-//       ) : (
-//         <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-//           <div className="p-6">
-//             <div className="flex justify-between items-center mb-4">
-//               <h2 className="text-lg font-light text-gray-800">
-//                 Pending Verification Requests
-//               </h2>
-//               <div className="text-sm text-gray-500">
-//                 Showing: {pendingEmployees.length} requests
-//               </div>
-//             </div>
-
-//             <div className="overflow-x-auto">
-//               <table className="min-w-full divide-y divide-gray-200">
-//                 <thead className="bg-gray-50">
-//                   <tr>
-//                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Emp ID</th>
-//                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-//                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
-//                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-//                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
-//                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
-//                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
-//                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-//                   </tr>
-//                 </thead>
-//                 <tbody className="bg-white divide-y divide-gray-200">
-//                   {pendingEmployees.map((emp) => (
-//                     <tr key={emp.ibsEmpId}>
-//                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{emp.ibsEmpId}</td>
-//                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{emp.userName}</td>
-//                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{emp.role}</td>
-//                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{emp.emailId}</td>
-//                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{emp.phoneNumber}</td>
-//                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{emp.location}</td>
-//                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{emp.country}</td>
-//                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-//                         <button
-//                           onClick={() => handleVerify(emp.ibsEmpId)}
-//                           className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors text-sm"
-//                         >
-//                           Verify
-//                         </button>
-//                       </td>
-//                     </tr>
-//                   ))}
-//                 </tbody>
-//               </table>
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default PendingRequestsPage;
-
-
-
-
-
-
-
-
-// src/components/PendingRequestsPage.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const PendingRequestsPage = () => {
   const [pendingEmployees, setPendingEmployees] = useState([]);
   const [error, setError] = useState("");
-
-  // ... (keep your existing state and logic)
-
-
+  const [userName, setUserName] = useState("");
 
   const fetchPendingRequests = async () => {
     try {
@@ -289,75 +169,68 @@ const PendingRequestsPage = () => {
     fetchPendingRequests();
   }, []);
 
-
-
-
   return (
-    <div>
-      <div className="mb-8">
-        <h1 className="text-2xl font-light text-gray-800 mb-2">Pending Employee Verifications</h1>
-      </div>
-
-      {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-          {error}
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-7xl mx-auto p-6">
+        {/* Header */}
+        <div className="mb-8">
+          {/* <h1 className="text-2xl font-light text-gray-800">Hello {userName}</h1> */}
+          <h2 className="text-xl font-semibold text-gray-800">Pending Employee Verifications</h2>
         </div>
-      )}
 
-      {!error && pendingEmployees.length === 0 ? (
-        <div className="bg-white rounded-lg shadow-sm p-6 text-center text-gray-500">
-          No pending requests found.
-        </div>
-      ) : (
-        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-          <div className="p-6 border-b border-gray-200">
-            <h2 className="text-lg font-light text-gray-800">
-              Pending Verification Requests
-            </h2>
-            <p className="text-sm text-gray-500 mt-1">
-              Showing {pendingEmployees.length} requests
-            </p>
-          </div>
+        {/* Main Content */}
+        <div className="bg-white rounded-lg shadow p-6 mb-8">
+          {error && (
+            <div className="mb-4 p-4 bg-red-50 text-red-700 rounded-md">
+              {error}
+            </div>
+          )}
 
-          <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Emp ID</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {pendingEmployees.map((emp) => (
-                  <tr key={emp.ibsEmpId}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{emp.ibsEmpId}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{emp.userName}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{emp.role}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{emp.emailId}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{emp.phoneNumber}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{emp.location}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{emp.country}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      <button
-                        onClick={() => handleVerify(emp.ibsEmpId)}
-                        className="px-3 py-1 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 text-xs"
-                      >
-                        Verify
-                      </button>
-                    </td>
+          {!error && pendingEmployees.length === 0 && (
+            <p className="text-gray-500">No pending requests.</p>
+          )}
+
+          {pendingEmployees.length > 0 && (
+            <div className="overflow-x-auto">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Emp ID</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Country</th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {pendingEmployees.map((emp) => (
+                    <tr key={emp.ibsEmpId} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{emp.ibsEmpId}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{emp.userName}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{emp.role}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{emp.emailId}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{emp.phoneNumber}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{emp.location}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{emp.country}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <button
+                          onClick={() => handleVerify(emp.ibsEmpId)}
+                          className="px-3 py-1 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+                        >
+                          Verify
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 };
